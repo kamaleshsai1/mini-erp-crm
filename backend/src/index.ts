@@ -2,6 +2,7 @@ import 'express-async-errors';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import path from 'path';
 import { config } from './config';
 import routes from './routes';
 import { errorHandler } from './middleware/errorHandler';
@@ -56,6 +57,12 @@ app.get('/health', (req, res) => {
     service: 'mini-erp-crm-backend',
     database: 'connected'
   });
+});
+
+// Postman collection direct download
+app.get('/postman', (_req, res) => {
+  const filePath = path.join(__dirname, '../mini-erp-crm.postman_collection.json');
+  res.download(filePath, 'mini-erp-crm.postman_collection.json');
 });
 
 // API Routes

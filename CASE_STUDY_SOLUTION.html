@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MetroOps Mini ERP & CRM - Case Study Solution Report</title>
+  <style>
+    @media print {
+      body { padding: 0; background: #fff; }
+      .no-print { display: none; }
+      @page { margin: 1.5cm; }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #f8fafc;
+    }
+    .document {
+      background: #ffffff;
+      padding: 50px 60px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+    }
+    .print-bar {
+      position: sticky;
+      top: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: flex-end;
+      z-index: 100;
+    }
+    .print-btn {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    }
+    h1 { color: #0f172a; font-size: 26px; border-bottom: 2px solid #2563eb; padding-bottom: 12px; margin-top: 0; }
+    h2 { color: #1e3a8a; font-size: 20px; margin-top: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; }
+    h3 { color: #334155; font-size: 16px; margin-top: 20px; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13.5px; }
+    th, td { border: 1px solid #cbd5e1; padding: 9px 12px; text-align: left; }
+    th { background: #f1f5f9; color: #334155; font-weight: 700; }
+    pre { background: #0f172a; color: #f8fafc; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 12.5px; }
+    code { font-family: Consolas, Monaco, monospace; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 12px; background: #e0f2fe; color: #0369a1; }
+    .links-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 16px; margin: 20px 0; font-size: 14px; }
+    .links-box a { color: #1d4ed8; text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <div class="print-bar no-print">
+    <button class="print-btn" onclick="window.print()">🖨️ Save as PDF / Print Document</button>
+  </div>
+
+  <div class="document">
+    <h1>Case Study Solution: MetroOps Mini ERP & CRM Suite</h1>
+    <p><strong>Candidate Submission:</strong> Full Stack Software Engineer Case Study</p>
+
+    <div class="links-box">
+      <div><strong>🌐 Live Frontend Portal:</strong> <a href="https://mini-erp-frontend-rqz6.onrender.com" target="_blank">https://mini-erp-frontend-rqz6.onrender.com</a></div>
+      <div><strong>⚡ Live Backend REST API:</strong> <a href="https://mini-erp-backend-m2hi.onrender.com" target="_blank">https://mini-erp-backend-m2hi.onrender.com</a></div>
+      <div><strong>❤️ Health Check:</strong> <a href="https://mini-erp-backend-m2hi.onrender.com/health" target="_blank">https://mini-erp-backend-m2hi.onrender.com/health</a></div>
+      <div><strong>📦 GitHub Repository:</strong> <a href="https://github.com/kamaleshsai1/mini-erp-crm" target="_blank">https://github.com/kamaleshsai1/mini-erp-crm</a></div>
+    </div>
+
+    <h2>1. Executive Summary</h2>
+    <p>
+      MetroOps is an enterprise-grade wholesale & distribution operations management system developed to replace error-prone spreadsheets with an automated, transactional platform. It provides seamless synchronization across wholesale customer relationships, real-time SKU inventory tracking, atomic order dispatch challans, and GST-compliant tax invoicing.
+    </p>
+
+    <h2>2. System Architecture & Tech Stack</h2>
+    <ul>
+      <li><strong>Frontend SPA:</strong> React 18, TypeScript, Vite, Vanilla CSS3 Design System with responsive grid layouts.</li>
+      <li><strong>Backend REST API:</strong> Node.js, Express, TypeScript, modular controller-service pattern.</li>
+      <li><strong>Database & ORM:</strong> PostgreSQL 15 on cloud, Prisma ORM with native ACID transactions.</li>
+      <li><strong>Validation & Security:</strong> Zod runtime schema validation, JWT Bearer tokens, BCrypt password hashing, Helmet, CORS protection.</li>
+    </ul>
+
+    <h2>3. Role-Based Access Control (RBAC) Matrix</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Module / Capability</th>
+          <th>Admin</th>
+          <th>Sales</th>
+          <th>Warehouse</th>
+          <th>Accounts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Operations Dashboard</strong></td><td>Full</td><td>Full</td><td>Full</td><td>Full</td></tr>
+        <tr><td><strong>CRM: Customer Directory</strong></td><td>Full</td><td>Full</td><td>Read-Only</td><td>Read-Only</td></tr>
+        <tr><td><strong>CRM: Add Leads / Notes</strong></td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
+        <tr><td><strong>Inventory: SKU Catalog</strong></td><td>Full</td><td>Read-Only</td><td>Full</td><td>Read-Only</td></tr>
+        <tr><td><strong>Inventory: Stock IN / OUT</strong></td><td>Yes</td><td>No</td><td>Yes</td><td>No</td></tr>
+        <tr><td><strong>Sales Challan Creation</strong></td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
+        <tr><td><strong>Sales Challan Confirmation</strong></td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
+        <tr><td><strong>Tax Invoices & Financials</strong></td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+      </tbody>
+    </table>
+    <p><em>Demo Password for all roles:</em> <code>Password123!</code></p>
+
+    <h2>4. Core Business Logic & Data Integrity</h2>
+    <h3>A. Atomic Stock Deductions (Zero Negative Stock)</h3>
+    <p>
+      When a sales challan is confirmed, all line items are validated against available warehouse stock within an atomic database transaction. If any SKU lacks sufficient units, the entire operation is rolled back with an informative error message.
+    </p>
+
+    <h3>B. Snapshot Immutability</h3>
+    <p>
+      Historical orders are decoupled from ongoing catalog edits. When line items are added to a challan, snapshots of the product name, SKU, and unit price are permanently stored in the database.
+    </p>
+
+    <h3>C. Goods & Services Tax (GSTIN) Compliance</h3>
+    <p>
+      Every sales challan generates an itemized, printable delivery challan and tax invoice adhering to GST regulations with company and customer GST numbers.
+    </p>
+
+    <h2>5. Test Scenarios & Verification</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Test Case</th>
+          <th>Action</th>
+          <th>Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. RBAC Restriction</strong></td>
+          <td>Warehouse user attempts to create a Sales Challan</td>
+          <td>Blocked by UI and rejected with 403 Forbidden by API middleware.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Negative Stock Block</strong></td>
+          <td>Order 500 units of item with only 25 in stock</td>
+          <td>Transaction aborted; descriptive error returned without altering inventory.</td>
+        </tr>
+        <tr>
+          <td><strong>3. Confirmed Dispatch</strong></td>
+          <td>Confirm order with valid stock</td>
+          <td>Stock deducted atomically; immutable stock movement audit trail logged.</td>
+        </tr>
+        <tr>
+          <td><strong>4. Tax Invoice Generation</strong></td>
+          <td>Click "Print Invoice" on Challan detail</td>
+          <td>Clean printable tax invoice rendered with GSTIN and audit items.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>6. Known Limitations & Roadmap</h2>
+    <ol>
+      <li><strong>Multi-Warehouse Support:</strong> Tracking inventory across geographically distributed warehouses with transfer challans.</li>
+      <li><strong>Government E-Way Bill Integration:</strong> Automatic direct filing for consignments exceeding statutory thresholds.</li>
+      <li><strong>Barcode Scanner Support:</strong> Mobile camera scanning for high-volume picking and packing.</li>
+    </ol>
+  </div>
+
+</body>
+</html>

@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "prisma generate --schema=./prisma/schema.postgresql.prisma && tsc",
+    "build": "npx prisma generate --schema=./prisma/schema.postgresql.prisma && tsc",
     "start": "node dist/index.js",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",

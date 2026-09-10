@@ -19,6 +19,20 @@ app.use(
 app.use(express.json());
 app.use(morgan('dev'));
 
+// Root status and welcoming endpoint
+app.get('/', (_req, res) => {
+  res.json({
+    name: 'MetroOps - Mini ERP + CRM Backend API',
+    version: '1.0.0',
+    status: 'online',
+    description: 'Operations Portal Backend with RBAC, CRM, Inventory & Sales Challans',
+    health: '/health',
+    apiBase: '/api',
+    frontend: 'https://mini-erp-frontend-rqz6.onrender.com',
+    documentation: 'https://github.com/kamaleshsai1/mini-erp-crm#readme'
+  });
+});
+
 // Health check
 app.get('/health', (_req, res) => {
   res.json({

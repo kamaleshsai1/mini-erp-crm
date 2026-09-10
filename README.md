@@ -1,10 +1,13 @@
 # Mini ERP + CRM Operations Portal
 
 > **Full Stack Developer Case Study**: Wholesale & Distribution Operations Suite  
-> Built with Node.js, Express, TypeScript, Prisma ORM, React (Vite), and Role-Based Access Control.  
-> **GitHub Repository**: [https://github.com/kamaleshsai1/mini-erp-crm](https://github.com/kamaleshsai1/mini-erp-crm)
-
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/kamaleshsai1/mini-erp-crm)
+> Built with Node.js, Express, TypeScript, PostgreSQL (Prisma ORM), React (Vite), and Role-Based Access Control.  
+> 
+> 🌐 **Live 24/7 Production Deployment**:
+> - **Frontend Portal**: [https://mini-erp-frontend-rqz6.onrender.com](https://mini-erp-frontend-rqz6.onrender.com)
+> - **Backend API**: [https://mini-erp-backend-m2hi.onrender.com](https://mini-erp-backend-m2hi.onrender.com)
+> - **Backend Health Check**: [https://mini-erp-backend-m2hi.onrender.com/health](https://mini-erp-backend-m2hi.onrender.com/health)
+> - **GitHub Repository**: [https://github.com/kamaleshsai1/mini-erp-crm](https://github.com/kamaleshsai1/mini-erp-crm)
 
 ---
 

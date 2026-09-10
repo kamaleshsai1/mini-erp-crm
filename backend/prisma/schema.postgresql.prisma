@@ -1,4 +1,4 @@
-// PostgreSQL Prisma Schema for Production / Docker / Neon / Supabase Deployment
+// PostgreSQL Prisma Schema for Production / Docker / Neon / Supabase / Render Deployment
 
 generator client {
   provider = "prisma-client-js"
@@ -9,42 +9,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  ADMIN
-  SALES
-  WAREHOUSE
-  ACCOUNTS
-}
-
-enum CustomerType {
-  RETAIL
-  WHOLESALE
-  DISTRIBUTOR
-}
-
-enum CustomerStatus {
-  LEAD
-  ACTIVE
-  INACTIVE
-}
-
-enum MovementType {
-  IN
-  OUT
-}
-
-enum ChallanStatus {
-  DRAFT
-  CONFIRMED
-  CANCELLED
-}
-
 model User {
   id           String   @id @default(uuid())
   email        String   @unique
   name         String
   passwordHash String
-  role         Role     @default(SALES)
+  role         String   @default("SALES") // ADMIN, SALES, WAREHOUSE, ACCOUNTS
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
@@ -54,19 +24,19 @@ model User {
 }
 
 model Customer {
-  id           String         @id @default(uuid())
+  id           String    @id @default(uuid())
   name         String
   mobile       String
   email        String
   businessName String
   gstNumber    String?
-  customerType CustomerType   @default(RETAIL)
+  customerType String    @default("RETAIL") // RETAIL, WHOLESALE, DISTRIBUTOR
   address      String
-  status       CustomerStatus @default(LEAD)
+  status       String    @default("LEAD")   // LEAD, ACTIVE, INACTIVE
   followUpDate DateTime?
   notes        String?
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
 
   followUpNotes CustomerFollowUpNote[]
   challans      SalesChallan[]
@@ -99,29 +69,29 @@ model Product {
 }
 
 model StockMovementLog {
-  id              String       @id @default(uuid())
+  id              String   @id @default(uuid())
   productId       String
-  product         Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  product         Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   quantityChanged Int
-  movementType    MovementType
+  movementType    String   // IN, OUT
   reason          String
   createdByUserId String?
-  createdByUser   User?        @relation(fields: [createdByUserId], references: [id], onDelete: SetNull)
-  createdAt       DateTime     @default(now())
+  createdByUser   User?    @relation(fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt       DateTime @default(now())
 }
 
 model SalesChallan {
-  id              String        @id @default(uuid())
-  challanNumber   String        @unique
+  id              String   @id @default(uuid())
+  challanNumber   String   @unique
   customerId      String
-  customer        Customer      @relation(fields: [customerId], references: [id])
-  totalQuantity   Int           @default(0)
-  totalAmount     Float         @default(0)
-  status          ChallanStatus @default(DRAFT)
+  customer        Customer @relation(fields: [customerId], references: [id])
+  totalQuantity   Int      @default(0)
+  totalAmount     Float    @default(0)
+  status          String   @default("DRAFT") // DRAFT, CONFIRMED, CANCELLED
   createdByUserId String?
-  createdByUser   User?         @relation(fields: [createdByUserId], references: [id], onDelete: SetNull)
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
+  createdByUser   User?    @relation(fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 
   items           SalesChallanItem[]
 }

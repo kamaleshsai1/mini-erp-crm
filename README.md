@@ -29,31 +29,6 @@ This application is designed specifically for wholesale and distribution busines
 
 ---
 
-## Glossary of Terms & Acronyms
-
-To ensure total clarity for all evaluators and reviewers, here are the full forms of key industry terms and abbreviations used across this project:
-
-| Acronym | Full Form | Meaning in this System |
-| :--- | :--- | :--- |
-| **ERP** | **Enterprise Resource Planning** | Integrated business operations management software handling sales, inventory, and order fulfillment |
-| **CRM** | **Customer Relationship Management** | System to manage customer directories, business tiers, contact information, and scheduled follow-ups |
-| **RBAC** | **Role-Based Access Control** | Security authorization model granting permissions strictly by user role (Admin, Sales, Warehouse, Accounts) |
-| **SKU** | **Stock Keeping Unit** | Unique alphanumeric tracking identifier assigned to each distinct product in inventory |
-| **GST** | **Goods and Services Tax** | 15-character statutory tax identification number registered to commercial business customers |
-| **ACID** | **Atomicity, Consistency, Isolation, Durability** | Database transaction guarantees ensuring multi-step inventory deductions never fail halfway |
-| **API** | **Application Programming Interface** | Structured HTTP endpoints enabling seamless communication between frontend UI and backend services |
-| **JWT** | **JSON Web Token** | Digitally signed, stateless cryptographic security tokens used to authenticate and authorize user requests |
-| **ORM** | **Object-Relational Mapping** | Prisma layer mapping TypeScript models directly to database tables with full type-safety |
-| **SPA** | **Single Page Application** | Modern React architecture delivering fluid client-side navigation without full browser reloads |
-| **UI** | **User Interface** | Visual layout, dashboard widgets, responsive data tables, and modal forms viewed in the browser |
-| **PDF** | **Portable Document Format** | Tamper-evident, high-resolution document format used for exportable Tax Invoices and Delivery Challans |
-| **DTO** | **Data Transfer Object** | Structured TypeScript type interfaces defining the shape of request and response payloads |
-| **KPI** | **Key Performance Indicator** | Core business overview statistics displayed on the dashboard (Revenue, Active CRM Accounts, Low Stock) |
-| **CORS** | **Cross-Origin Resource Sharing** | Browser security mechanism governing authorized API communication across different domain origins |
-| **TTL** | **Time To Live** | Expiration lifespan of a JWT authorization token (configured to 7 days in this application) |
-
----
-
 ## Test Login Credentials (All 4 Roles)
 
 All demo accounts share the password: **`Password123!`**

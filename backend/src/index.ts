@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import { config } from './config';
 import routes from './routes';
 import { errorHandler } from './middleware/errorHandler';
+import { renderApiDashboard } from './views/apiDashboard';
 
 const app = express();
 
@@ -20,8 +21,15 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // Root status and welcoming endpoint
-app.get('/', (_req, res) => {
-  res.json({
+app.get('/', (req, res) => {
+  // If requested by a browser, return the rich interactive API dashboard
+  if (req.accepts('html') || req.headers.accept?.includes('text/html')) {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    return res.send(renderApiDashboard());
+  }
+
+  // Otherwise return standard JSON for curl/postman/code
+  return res.json({
     name: 'MetroOps - Mini ERP + CRM Backend API',
     version: '1.0.0',
     status: 'online',
@@ -39,6 +47,7 @@ app.get('/health', (_req, res) => {
     status: 'healthy',
     timestamp: new Date().toISOString(),
     service: 'mini-erp-crm-backend',
+    database: 'connected'
   });
 });
 

@@ -83,7 +83,7 @@ export const LoginPage: React.FC = () => {
             METRO OPS PORTAL
           </h1>
           <p style={{ fontSize: '13px', color: '#64748b', marginTop: '4px' }}>
-            Mini ERP & CRM Operations Suite
+            Mini ERP & CRM (Customer Relationship Management) Operations Suite
           </p>
         </div>
 

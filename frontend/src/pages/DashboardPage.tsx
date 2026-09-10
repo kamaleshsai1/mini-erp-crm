@@ -50,7 +50,7 @@ export const DashboardPage: React.FC<DashboardProps> = ({ onNavigate }) => {
       <div className="page-header">
         <div>
           <h1 className="page-title">Operations Overview</h1>
-          <p className="page-subtitle">Real-time pulse of wholesale orders, inventory, and customer activity</p>
+          <p className="page-subtitle">Real-time pulse of wholesale orders, inventory, and Customer Relationship Management (CRM)</p>
         </div>
       </div>
 
@@ -73,7 +73,7 @@ export const DashboardPage: React.FC<DashboardProps> = ({ onNavigate }) => {
 
         <div className="stat-card">
           <div>
-            <div className="stat-label">Customers CRM</div>
+            <div className="stat-label">Customer Relationship (CRM)</div>
             <div className="stat-value">
               {metrics?.activeCustomers || 0}
               <span style={{ fontSize: '16px', fontWeight: 500, color: '#94a3b8' }}> / {metrics?.totalCustomers || 0}</span>

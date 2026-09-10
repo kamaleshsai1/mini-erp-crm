@@ -168,7 +168,7 @@ export const CustomersPage: React.FC = () => {
     <div className="page-body">
       <div className="page-header">
         <div>
-          <h1 className="page-title">Customer Relationship Management</h1>
+          <h1 className="page-title">Customer Relationship Management (CRM)</h1>
           <p className="page-subtitle">Track wholesale buyers, manage leads, addresses, and sales interactions</p>
         </div>
         {canManageCustomers && (
@@ -472,7 +472,7 @@ export const CustomersPage: React.FC = () => {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   <div className="form-group">
-                    <label className="form-label">CRM Status</label>
+                    <label className="form-label">Customer Relationship Status (CRM)</label>
                     <select
                       value={formData.status}
                       onChange={(e) => setFormData({ ...formData, status: e.target.value as CustomerStatus })}
@@ -580,7 +580,7 @@ export const CustomersPage: React.FC = () => {
               {/* Follow-up Notes Timeline */}
               <div style={{ marginBottom: '24px' }}>
                 <h3 style={{ fontSize: '15px', fontWeight: 700, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Clock size={16} color="#2563eb" /> CRM Follow-up Timeline & Notes
+                  <Clock size={16} color="#2563eb" /> Customer Relationship (CRM) Follow-up Timeline & Notes
                 </h3>
 
                 {canManageCustomers && (

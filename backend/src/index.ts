@@ -5,7 +5,7 @@ import morgan from 'morgan';
 import { config } from './config';
 import routes from './routes';
 import { errorHandler } from './middleware/errorHandler';
-import { renderApiDashboard } from './views/apiDashboard';
+import { renderApiDashboard, renderHealthDashboard } from './views/apiDashboard';
 
 const app = express();
 
@@ -42,8 +42,15 @@ app.get('/', (req, res) => {
 });
 
 // Health check
-app.get('/health', (_req, res) => {
-  res.json({
+app.get('/health', (req, res) => {
+  // If requested from browser (without ?format=json), serve rich visual status page
+  if ((req.accepts('html') || req.headers.accept?.includes('text/html')) && req.query.format !== 'json') {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    return res.send(renderHealthDashboard());
+  }
+
+  // Otherwise return standard JSON for monitors/code
+  return res.json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
     service: 'mini-erp-crm-backend',

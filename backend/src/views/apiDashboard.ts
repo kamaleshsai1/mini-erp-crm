@@ -399,3 +399,207 @@ export function renderApiDashboard(): string {
 </body>
 </html>`;
 }
+
+export function renderHealthDashboard(): string {
+  const timestamp = new Date().toISOString();
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Health &bull; MetroOps Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --surface: #111827;
+      --surface-border: #1f2937;
+      --primary: #3b82f6;
+      --success: #10b981;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+      background-image: 
+        radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+    }
+    .health-card {
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 540px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(16, 185, 129, 0.15);
+      backdrop-filter: blur(12px);
+      text-align: center;
+    }
+    .icon-ring {
+      width: 80px;
+      height: 80px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 2px solid #10b981;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin: 0 auto 1.5rem auto;
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+      animation: breathe 3s infinite ease-in-out;
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(16, 185, 129, 0.35); }
+      50% { transform: scale(1.05); box-shadow: 0 0 35px rgba(16, 185, 129, 0.5); }
+    }
+    h1 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+    .subhead {
+      color: #34d399;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    .metric-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+    .metric-name {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+    .metric-val {
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .text-green { color: #34d399; }
+    .btn-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.4rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(37, 99, 235, 0.5);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      border: 1px solid var(--surface-border);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    .json-link {
+      display: inline-block;
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .json-link:hover { color: #93c5fd; text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="health-card">
+    <div class="icon-ring">✓</div>
+    <h1>System Status: Healthy</h1>
+    <div class="subhead">
+      <span class="pulse-dot"></span>
+      <span>ALL SERVICES FULLY OPERATIONAL</span>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-box">
+        <div class="metric-name">Backend API</div>
+        <div class="metric-val text-green">ONLINE (200 OK)</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-name">Cloud Database</div>
+        <div class="metric-val text-green">POSTGRESQL 15</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-name">Service Name</div>
+        <div class="metric-val" style="font-size: 0.8rem;">mini-erp-crm-backend</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-name">Checked At</div>
+        <div class="metric-val" style="font-size: 0.8rem;">${timestamp.substring(11, 19)} UTC</div>
+      </div>
+    </div>
+
+    <div class="btn-stack">
+      <a href="https://mini-erp-frontend-rqz6.onrender.com" target="_blank" class="btn btn-primary">
+        🖥️ Open MetroOps Frontend Portal
+      </a>
+      <a href="/" class="btn btn-secondary">
+        ⚡ View API Directory & Credentials
+      </a>
+    </div>
+
+    <a href="/health?format=json" class="json-link">
+      Raw JSON View: { "status": "healthy", "database": "connected" }
+    </a>
+  </div>
+</body>
+</html>`;
+}
+

@@ -1,11 +1,11 @@
-# Mini ERP + CRM Operations Portal
+# Mini ERP (Enterprise Resource Planning) + CRM (Customer Relationship Management) Operations Portal
 
 > **Full Stack Developer Case Study**: Wholesale & Distribution Operations Suite  
-> Built with Node.js, Express, TypeScript, PostgreSQL (Prisma ORM), React (Vite), and Role-Based Access Control.  
+> Built with Node.js, Express, TypeScript, PostgreSQL (Prisma ORM - Object-Relational Mapping), React (Vite), and RBAC (Role-Based Access Control).  
 > 
 > **Live 24/7 Production Deployment**:
-> - **Frontend Portal**: [https://mini-erp-frontend-rqz6.onrender.com](https://mini-erp-frontend-rqz6.onrender.com)
-> - **Backend API**: [https://mini-erp-backend-m2hi.onrender.com](https://mini-erp-backend-m2hi.onrender.com)
+> - **Frontend Portal (UI - User Interface)**: [https://mini-erp-frontend-rqz6.onrender.com](https://mini-erp-frontend-rqz6.onrender.com)
+> - **Backend API (Application Programming Interface)**: [https://mini-erp-backend-m2hi.onrender.com](https://mini-erp-backend-m2hi.onrender.com)
 > - **Backend Health Check**: [https://mini-erp-backend-m2hi.onrender.com/health](https://mini-erp-backend-m2hi.onrender.com/health)
 > - **GitHub Repository**: [https://github.com/kamaleshsai1/mini-erp-crm](https://github.com/kamaleshsai1/mini-erp-crm)
 
@@ -15,17 +15,42 @@
 
 This application is designed specifically for wholesale and distribution businesses managing high-throughput inventory, tiered customer relationships, warehouse fulfillment, and sales challans.
 
-- **Role-Based Access Control (RBAC)**: 4 tailored roles (**Admin**, **Sales**, **Warehouse**, **Accounts**).
+- **RBAC (Role-Based Access Control)**: 4 tailored roles (**Admin**, **Sales**, **Warehouse**, **Accounts**).
 - **Interactive Role Switcher**: 1-Click quick role switcher bar at the top of the app header for seamless evaluator testing.
-- **Customer CRM**: Multi-tier categorization (`Retail`, `Wholesale`, `Distributor`), status tracking (`Lead`, `Active`, `Inactive`), follow-up date scheduling, and chronological interaction timeline.
-- **Inventory & Warehouse**: Real-time SKU catalog, low-stock threshold alert system, and manual inward/outward adjustments with mandatory audit trails.
+- **Customer CRM (Customer Relationship Management)**: Multi-tier categorization (`Retail`, `Wholesale`, `Distributor`), status tracking (`Lead`, `Active`, `Inactive`), GST (Goods and Services Tax) registration numbers, follow-up date scheduling, and chronological interaction timeline.
+- **Inventory & Warehouse**: Real-time SKU (Stock Keeping Unit) catalog, low-stock threshold alert system, and manual inward/outward adjustments with mandatory audit trails.
 - **Sales Challan Business Logic**:
   - Auto-generated sequential identifiers (`CH-YYYYMM-XXXX`).
-  - Immutability: Product snapshot caching (name, SKU, unit price at time of order).
-  - Atomic stock deductions upon confirmation using ACID database transactions.
-  - Negative-stock prevention with clear, descriptive API error diagnostics.
-  - Instant print & exportable Tax Invoice / Delivery Challan in PDF format.
+  - Immutability: Product snapshot caching (name, SKU - Stock Keeping Unit, unit price at time of order).
+  - Atomic stock deductions upon confirmation using ACID (Atomicity, Consistency, Isolation, Durability) database transactions.
+  - Negative-stock prevention with clear, descriptive API (Application Programming Interface) error diagnostics.
+  - Instant print & exportable Tax Invoice / Delivery Challan in PDF (Portable Document Format).
 - **Dual Database Portability**: Runs with zero-config out-of-the-box on SQLite (`dev.db`), and includes production PostgreSQL schema and Docker Compose ready for cloud deployment (Neon, Supabase, Render, AWS RDS).
+
+---
+
+## Glossary of Terms & Acronyms
+
+To ensure total clarity for all evaluators and reviewers, here are the full forms of key industry terms and abbreviations used across this project:
+
+| Acronym | Full Form | Meaning in this System |
+| :--- | :--- | :--- |
+| **ERP** | **Enterprise Resource Planning** | Integrated business operations management software handling sales, inventory, and order fulfillment |
+| **CRM** | **Customer Relationship Management** | System to manage customer directories, business tiers, contact information, and scheduled follow-ups |
+| **RBAC** | **Role-Based Access Control** | Security authorization model granting permissions strictly by user role (Admin, Sales, Warehouse, Accounts) |
+| **SKU** | **Stock Keeping Unit** | Unique alphanumeric tracking identifier assigned to each distinct product in inventory |
+| **GST** | **Goods and Services Tax** | 15-character statutory tax identification number registered to commercial business customers |
+| **ACID** | **Atomicity, Consistency, Isolation, Durability** | Database transaction guarantees ensuring multi-step inventory deductions never fail halfway |
+| **API** | **Application Programming Interface** | Structured HTTP endpoints enabling seamless communication between frontend UI and backend services |
+| **JWT** | **JSON Web Token** | Digitally signed, stateless cryptographic security tokens used to authenticate and authorize user requests |
+| **ORM** | **Object-Relational Mapping** | Prisma layer mapping TypeScript models directly to database tables with full type-safety |
+| **SPA** | **Single Page Application** | Modern React architecture delivering fluid client-side navigation without full browser reloads |
+| **UI** | **User Interface** | Visual layout, dashboard widgets, responsive data tables, and modal forms viewed in the browser |
+| **PDF** | **Portable Document Format** | Tamper-evident, high-resolution document format used for exportable Tax Invoices and Delivery Challans |
+| **DTO** | **Data Transfer Object** | Structured TypeScript type interfaces defining the shape of request and response payloads |
+| **KPI** | **Key Performance Indicator** | Core business overview statistics displayed on the dashboard (Revenue, Active CRM Accounts, Low Stock) |
+| **CORS** | **Cross-Origin Resource Sharing** | Browser security mechanism governing authorized API communication across different domain origins |
+| **TTL** | **Time To Live** | Expiration lifespan of a JWT authorization token (configured to 7 days in this application) |
 
 ---
 
@@ -128,13 +153,13 @@ Visit **`http://localhost:5173`** in your browser and log in with any demo role 
 
 ---
 
-## Deployment & DevOps Guide
+## Deployment & DevOps (Development Operations) Guide
 
-### 1. AWS Deployment Options
+### 1. AWS (Amazon Web Services) Deployment Options
 
-#### Option A: AWS EC2 (Single-Instance with Docker Compose)
-1. **Launch EC2 Instance**: Launch an AWS EC2 `t3.small` or `t3.medium` instance running Ubuntu 22.04 LTS.
-2. **Configure Security Group**: Open inbound ports `22` (SSH), `80` (HTTP), and `443` (HTTPS).
+#### Option A: AWS EC2 (Elastic Compute Cloud - Single-Instance with Docker Compose)
+1. **Launch EC2 Instance**: Launch an AWS EC2 `t3.small` or `t3.medium` instance running Ubuntu 22.04 LTS (Long Term Support).
+2. **Configure Security Group**: Open inbound ports `22` (SSH - Secure Shell), `80` (HTTP - Hypertext Transfer Protocol), and `443` (HTTPS - Secure HTTP).
 3. **Install Docker & Docker Compose**:
    ```bash
    sudo apt-get update
@@ -148,14 +173,14 @@ Visit **`http://localhost:5173`** in your browser and log in with any demo role 
    docker-compose up -d --build
    ```
 
-#### Option B: AWS ECS (Fargate) + AWS RDS PostgreSQL
-- **Database**: AWS RDS PostgreSQL instance (db.t4g.micro for cost-efficiency).
-- **Backend Container**: Built from `backend/Dockerfile` and deployed to an ECS Fargate Service behind an Application Load Balancer (ALB).
-- **Frontend Container**: Built from `frontend/Dockerfile` (Nginx serving SPA) or hosted via AWS S3 + CloudFront.
+#### Option B: AWS ECS (Elastic Container Service - Fargate) + AWS RDS (Relational Database Service) PostgreSQL
+- **Database**: AWS RDS PostgreSQL instance (`db.t4g.micro` for cost-efficiency).
+- **Backend Container**: Built from `backend/Dockerfile` and deployed to an ECS Fargate Service behind an ALB (Application Load Balancer).
+- **Frontend Container**: Built from `frontend/Dockerfile` (Nginx serving React SPA - Single Page Application) or hosted via AWS S3 (Simple Storage Service) + CloudFront CDN (Content Delivery Network).
 
 ---
 
-### 2. Server Setup Documentation (Bare-Metal / VPS / Ubuntu)
+### 2. Server Setup Documentation (Bare-Metal / VPS - Virtual Private Server / Ubuntu)
 
 For production deployment directly on an Ubuntu/Debian Linux server without Docker:
 

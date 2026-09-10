@@ -4,6 +4,8 @@
 > Built with Node.js, Express, TypeScript, Prisma ORM, React (Vite), and Role-Based Access Control.  
 > **GitHub Repository**: [https://github.com/kamaleshsai1/mini-erp-crm](https://github.com/kamaleshsai1/mini-erp-crm)
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/kamaleshsai1/mini-erp-crm)
+
 ---
 
 ## 🌟 Executive Summary & Key Highlights

@@ -222,8 +222,6 @@ Environment variables are isolated through `.env` files and never committed to v
 
 ### 4. Free Cloud Hosting Deployment Guide
 
-As requested in the case study guidelines (Page 4):
-
 1. **Database**: Free cloud PostgreSQL on [Neon.tech](https://neon.tech) or [Supabase](https://supabase.com).
    - Copy the PostgreSQL connection string (`postgresql://...`).
 2. **Backend**: Free deployment on [Render.com](https://render.com) or [Railway.app](https://railway.app).
@@ -239,7 +237,7 @@ As requested in the case study guidelines (Page 4):
 
 ---
 
-## Docker Deployment (Bonus)
+## Docker Deployment 
 
 To spin up the entire multi-container stack (PostgreSQL + Express Backend + Nginx/React Frontend):
 
@@ -253,7 +251,7 @@ docker compose up --build -d
 
 ---
 
-## 📡 REST API Reference Summary
+## REST API Reference Summary
 
 ### Authentication
 - `POST /api/auth/login` — Authenticate and receive JWT token.

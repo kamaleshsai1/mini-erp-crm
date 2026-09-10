@@ -35,7 +35,7 @@ export const StockLogsPage: React.FC = () => {
       <div className="page-header">
         <div>
           <h1 className="page-title">Stock Movement Audit Trail</h1>
-          <p className="page-subtitle">Immutable chronological log of all stock receipts, challan deductions, and adjustments</p>
+          <p className="page-subtitle">Immutable chronological log of all stock receipts, challan deductions, and adjustments (ERP Inventory Audit)</p>
         </div>
       </div>
 
@@ -59,7 +59,7 @@ export const StockLogsPage: React.FC = () => {
           />
           <input
             type="text"
-            placeholder="Search by SKU, product name, or reason..."
+            placeholder="Search by SKU (Stock Keeping Unit), product name, or reason..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="form-input"
@@ -139,7 +139,7 @@ export const StockLogsPage: React.FC = () => {
                   <td>
                     <div style={{ fontWeight: 700, color: '#0f172a' }}>{log.product?.name}</div>
                     <div style={{ fontSize: '12px', color: '#64748b' }}>
-                      SKU: <code>{log.product?.sku}</code> • {log.product?.location}
+                      SKU (Stock Keeping Unit): <code>{log.product?.sku}</code> • {log.product?.location}
                     </div>
                   </td>
                   <td style={{ textAlign: 'right', fontWeight: 700, fontSize: '15px' }}>

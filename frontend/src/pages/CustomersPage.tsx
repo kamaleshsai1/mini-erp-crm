@@ -169,7 +169,7 @@ export const CustomersPage: React.FC = () => {
       <div className="page-header">
         <div>
           <h1 className="page-title">Customer Relationship Management (CRM)</h1>
-          <p className="page-subtitle">Track wholesale buyers, manage leads, addresses, and sales interactions</p>
+          <p className="page-subtitle">Track wholesale buyers, manage leads, addresses, and Customer Relationship Management (CRM) sales interactions</p>
         </div>
         {canManageCustomers && (
           <button onClick={openCreateModal} className="btn btn-primary">
@@ -198,7 +198,7 @@ export const CustomersPage: React.FC = () => {
           />
           <input
             type="text"
-            placeholder="Search customer, business, mobile, or GSTIN..."
+            placeholder="Search customer, business, mobile, or GSTIN (Goods & Services Tax ID)..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="form-input"
@@ -267,7 +267,7 @@ export const CustomersPage: React.FC = () => {
                     <div style={{ fontSize: '13px', color: '#475569' }}>Attn: {c.name}</div>
                     {c.gstNumber && (
                       <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
-                        GST: {c.gstNumber}
+                        GSTIN (Goods & Services Tax ID): {c.gstNumber}
                       </div>
                     )}
                   </td>
@@ -447,7 +447,7 @@ export const CustomersPage: React.FC = () => {
                     </select>
                   </div>
                   <div className="form-group">
-                    <label className="form-label">GST Number (Optional)</label>
+                    <label className="form-label">GSTIN - Goods & Services Tax ID (Optional)</label>
                     <input
                       type="text"
                       value={formData.gstNumber}
@@ -472,7 +472,7 @@ export const CustomersPage: React.FC = () => {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   <div className="form-group">
-                    <label className="form-label">Customer Relationship Status (CRM)</label>
+                    <label className="form-label">Customer Relationship Management (CRM) Status</label>
                     <select
                       value={formData.status}
                       onChange={(e) => setFormData({ ...formData, status: e.target.value as CustomerStatus })}
@@ -569,7 +569,7 @@ export const CustomersPage: React.FC = () => {
                   <strong>{selectedCustomer.email}</strong>
                 </div>
                 <div>
-                  <span style={{ color: '#64748b' }}>GSTIN:</span>{' '}
+                  <span style={{ color: '#64748b' }}>GSTIN (Goods & Services Tax ID):</span>{' '}
                   <strong>{selectedCustomer.gstNumber || 'Not provided'}</strong>
                 </div>
                 <div style={{ gridColumn: '1 / -1' }}>
@@ -580,7 +580,7 @@ export const CustomersPage: React.FC = () => {
               {/* Follow-up Notes Timeline */}
               <div style={{ marginBottom: '24px' }}>
                 <h3 style={{ fontSize: '15px', fontWeight: 700, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Clock size={16} color="#2563eb" /> Customer Relationship (CRM) Follow-up Timeline & Notes
+                  <Clock size={16} color="#2563eb" /> Customer Relationship Management (CRM) Follow-up Timeline & Notes
                 </h3>
 
                 {canManageCustomers && (

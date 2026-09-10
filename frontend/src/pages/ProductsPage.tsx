@@ -157,7 +157,7 @@ export const ProductsPage: React.FC = () => {
       <div className="page-header">
         <div>
           <h1 className="page-title">Product & Inventory Catalog</h1>
-          <p className="page-subtitle">Manage SKUs, stock levels, warehouse locations, and re-order thresholds</p>
+          <p className="page-subtitle">Manage SKUs (Stock Keeping Units), stock levels, warehouse locations, and re-order thresholds</p>
         </div>
         {canManageProducts && (
           <button onClick={openCreateModal} className="btn btn-primary">
@@ -186,7 +186,7 @@ export const ProductsPage: React.FC = () => {
           />
           <input
             type="text"
-            placeholder="Search by product name, SKU, or rack..."
+            placeholder="Search by product name, SKU (Stock Keeping Unit), or rack..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="form-input"
@@ -244,7 +244,7 @@ export const ProductsPage: React.FC = () => {
           <thead>
             <tr>
               <th>Product Details</th>
-              <th>SKU / Code</th>
+              <th>SKU (Stock Keeping Unit) / Code</th>
               <th>Category</th>
               <th style={{ textAlign: 'right' }}>Unit Price</th>
               <th style={{ textAlign: 'center' }}>Stock Level</th>
@@ -367,7 +367,7 @@ export const ProductsPage: React.FC = () => {
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   <div className="form-group">
-                    <label className="form-label">SKU / Code *</label>
+                    <label className="form-label">SKU (Stock Keeping Unit) / Code *</label>
                     <input
                       type="text"
                       required
@@ -484,7 +484,7 @@ export const ProductsPage: React.FC = () => {
                 >
                   <div style={{ fontWeight: 700 }}>{selectedProduct.name}</div>
                   <div style={{ fontSize: '12px', color: '#64748b' }}>
-                    SKU: {selectedProduct.sku} • Location: {selectedProduct.location}
+                    SKU (Stock Keeping Unit): {selectedProduct.sku} • Location: {selectedProduct.location}
                   </div>
                   <div style={{ marginTop: '6px', fontSize: '14px' }}>
                     Current Available Stock: <strong>{selectedProduct.currentStock} units</strong>

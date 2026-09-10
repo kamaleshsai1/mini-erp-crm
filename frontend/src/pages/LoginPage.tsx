@@ -83,7 +83,7 @@ export const LoginPage: React.FC = () => {
             METRO OPS PORTAL
           </h1>
           <p style={{ fontSize: '13px', color: '#64748b', marginTop: '4px' }}>
-            Mini ERP & CRM (Customer Relationship Management) Operations Suite
+            Mini ERP (Enterprise Resource Planning) & CRM (Customer Relationship Management) Operations Suite
           </p>
         </div>
 
@@ -108,7 +108,7 @@ export const LoginPage: React.FC = () => {
               textAlign: 'center',
             }}
           >
-            ⚡ 1-Click Demo Logins (Evaluator Shortcuts)
+            ⚡ 1-Click Demo Logins (RBAC - Role-Based Access Control)
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
             <button

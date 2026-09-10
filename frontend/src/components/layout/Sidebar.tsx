@@ -20,7 +20,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab }) =
 
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'customers', label: 'Customers (CRM - Customer Relationship)', icon: Users },
+    { id: 'customers', label: 'Customers (CRM - Customer Relationship Management)', icon: Users },
     { id: 'products', label: 'Products & Stock', icon: Package },
     { id: 'stock-logs', label: 'Stock Movements', icon: History },
     { id: 'challans', label: 'Sales Challans', icon: FileSpreadsheet },
@@ -55,8 +55,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab }) =
           <div style={{ fontWeight: 800, fontSize: '16px', letterSpacing: '-0.02em' }}>
             METRO<span style={{ color: '#60a5fa' }}>OPS</span>
           </div>
-          <div style={{ fontSize: '10px', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-            ERP & CRM (Customer Relationship)
+          <div style={{ fontSize: '9px', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.02em' }}>
+            ERP (Enterprise Resource Planning) & CRM (Customer Relationship Management)
           </div>
         </div>
       </div>
@@ -121,7 +121,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentTab, setCurrentTab }) =
       >
         <ShieldCheck size={18} color="#60a5fa" />
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: '11px', color: '#94a3b8' }}>Active Role</div>
+          <div style={{ fontSize: '11px', color: '#94a3b8' }}>Active Role (RBAC - Role-Based Access)</div>
           <div
             style={{
               fontSize: '13px',

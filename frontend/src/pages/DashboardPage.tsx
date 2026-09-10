@@ -50,11 +50,11 @@ export const DashboardPage: React.FC<DashboardProps> = ({ onNavigate }) => {
       <div className="page-header">
         <div>
           <h1 className="page-title">Operations Overview</h1>
-          <p className="page-subtitle">Real-time pulse of wholesale orders, inventory, and Customer Relationship Management (CRM)</p>
+          <p className="page-subtitle">Real-time Enterprise Resource Planning (ERP) metrics: wholesale orders, inventory, and Customer Relationship Management (CRM)</p>
         </div>
       </div>
 
-      {/* KPI Stats Grid */}
+      {/* KPI (Key Performance Indicators) Stats Grid */}
       <div className="stats-grid">
         <div className="stat-card">
           <div>
@@ -73,7 +73,7 @@ export const DashboardPage: React.FC<DashboardProps> = ({ onNavigate }) => {
 
         <div className="stat-card">
           <div>
-            <div className="stat-label">Customer Relationship (CRM)</div>
+            <div className="stat-label">Customers (CRM - Customer Relationship Management)</div>
             <div className="stat-value">
               {metrics?.activeCustomers || 0}
               <span style={{ fontSize: '16px', fontWeight: 500, color: '#94a3b8' }}> / {metrics?.totalCustomers || 0}</span>
@@ -265,7 +265,7 @@ export const DashboardPage: React.FC<DashboardProps> = ({ onNavigate }) => {
                       </td>
                       <td>
                         <div style={{ fontWeight: 600, color: '#0f172a' }}>{log.product?.name}</div>
-                        <div style={{ fontSize: '11px', color: '#64748b' }}>{log.product?.sku}</div>
+                        <div style={{ fontSize: '11px', color: '#64748b' }}>SKU (Stock Keeping Unit): {log.product?.sku}</div>
                       </td>
                       <td style={{ textAlign: 'right', fontWeight: 700 }}>
                         {log.movementType === 'IN' ? `+${log.quantityChanged}` : `-${log.quantityChanged}`}

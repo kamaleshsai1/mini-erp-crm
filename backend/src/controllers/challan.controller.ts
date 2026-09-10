@@ -390,7 +390,7 @@ export const getChallanInvoiceHtml = async (req: AuthenticatedRequest, res: Resp
       <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; text-align: center;">${idx + 1}</td>
       <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">
         <strong>${item.productNameSnapshot}</strong>
-        <div style="font-size: 11px; color: #64748b;">SKU: ${item.skuSnapshot}</div>
+        <div style="font-size: 11px; color: #64748b;">SKU (Stock Keeping Unit): ${item.skuSnapshot}</div>
       </td>
       <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; text-align: right;">${item.quantity}</td>
       <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; text-align: right;">₹${item.unitPriceSnapshot.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
@@ -434,7 +434,7 @@ export const getChallanInvoiceHtml = async (req: AuthenticatedRequest, res: Resp
   <div class="header">
     <div class="company">
       <h1>METRO WHOLESALE & DISTRIBUTION CORP</h1>
-      <p style="margin: 4px 0 0 0; font-size: 13px; color: #64748b;">Industrial Hub, Warehouse 4B, Sector 62 • GSTIN: 27AABCM9876Q1Z2</p>
+      <p style="margin: 4px 0 0 0; font-size: 13px; color: #64748b;">Industrial Hub, Warehouse 4B, Sector 62 • GSTIN (Goods & Services Tax ID): 27AABCM9876Q1Z2</p>
       <p style="margin: 2px 0 0 0; font-size: 13px; color: #64748b;">Phone: +91 22 2890 0000 • Email: dispatch@metrowholesale.corp</p>
     </div>
     <div style="text-align: right;">
@@ -451,7 +451,7 @@ export const getChallanInvoiceHtml = async (req: AuthenticatedRequest, res: Resp
       <div style="font-size: 14px; color: #334155; margin-top: 2px;">Attn: ${challan.customer.name}</div>
       <div style="font-size: 13px; color: #64748b; margin-top: 4px; max-width: 320px;">${challan.customer.address}</div>
       <div style="font-size: 13px; color: #334155; margin-top: 4px;">Phone: ${challan.customer.mobile}</div>
-      ${challan.customer.gstNumber ? `<div style="font-size: 13px; font-weight: 600; color: #0f172a; margin-top: 2px;">GSTIN: ${challan.customer.gstNumber}</div>` : ''}
+      ${challan.customer.gstNumber ? `<div style="font-size: 13px; font-weight: 600; color: #0f172a; margin-top: 2px;">GSTIN (Goods & Services Tax ID): ${challan.customer.gstNumber}</div>` : ''}
     </div>
     <div style="text-align: right;">
       <div class="section-title">Order Information:</div>
@@ -465,7 +465,7 @@ export const getChallanInvoiceHtml = async (req: AuthenticatedRequest, res: Resp
     <thead>
       <tr>
         <th style="width: 40px; text-align: center;">#</th>
-        <th style="text-align: left;">Item Description & SKU</th>
+        <th style="text-align: left;">Item Description & SKU (Stock Keeping Unit)</th>
         <th style="width: 90px; text-align: right;">Qty</th>
         <th style="width: 120px; text-align: right;">Unit Price</th>
         <th style="width: 130px; text-align: right;">Amount</th>

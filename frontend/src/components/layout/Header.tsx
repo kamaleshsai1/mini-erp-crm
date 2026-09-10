@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
           }}
         >
           <Sparkles size={14} color="#f59e0b" />
-          <span>Demo Role Switcher:</span>
+          <span>Role Switcher (RBAC - Role-Based Access Control):</span>
         </div>
 
         <div className="demo-role-bar">

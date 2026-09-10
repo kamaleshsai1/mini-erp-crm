@@ -210,7 +210,7 @@ export const ChallansPage: React.FC = () => {
       <div className="page-header">
         <div>
           <h1 className="page-title">Sales Challans & Invoices</h1>
-          <p className="page-subtitle">Dispatch orders, auto-reduce inventory on confirmation, and generate tax invoices</p>
+          <p className="page-subtitle">Dispatch orders, auto-reduce inventory on confirmation, and generate tax invoices (ERP Sales & Billing)</p>
         </div>
         {canCreateChallan && (
           <button onClick={openCreateModal} className="btn btn-primary">
@@ -677,7 +677,7 @@ export const ChallansPage: React.FC = () => {
                   <div style={{ color: '#334155' }}>{selectedChallan.customer.address}</div>
                   {selectedChallan.customer.gstNumber && (
                     <div style={{ marginTop: '4px', fontWeight: 600 }}>
-                      GSTIN: {selectedChallan.customer.gstNumber}
+                      GSTIN (Goods & Services Tax ID): {selectedChallan.customer.gstNumber}
                     </div>
                   )}
                 </div>
@@ -693,7 +693,7 @@ export const ChallansPage: React.FC = () => {
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Product & Snapshot SKU</th>
+                        <th>Product & Snapshot SKU (Stock Keeping Unit)</th>
                         <th style={{ textAlign: 'right' }}>Qty</th>
                         <th style={{ textAlign: 'right' }}>Snapshot Unit Price</th>
                         <th style={{ textAlign: 'right' }}>Subtotal</th>
@@ -706,7 +706,7 @@ export const ChallansPage: React.FC = () => {
                           <td>
                             <div style={{ fontWeight: 700 }}>{item.productNameSnapshot}</div>
                             <div style={{ fontSize: '11px', color: '#64748b' }}>
-                              SKU: {item.skuSnapshot}
+                              SKU (Stock Keeping Unit): {item.skuSnapshot}
                             </div>
                           </td>
                           <td style={{ textAlign: 'right', fontWeight: 600 }}>{item.quantity}</td>

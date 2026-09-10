@@ -1,11 +1,12 @@
 # Mini ERP + CRM Operations Portal
 
 > **Full Stack Developer Case Study**: Wholesale & Distribution Operations Suite  
-> Built with Node.js, Express, TypeScript, Prisma ORM, React (Vite), and Role-Based Access Control.
+> Built with Node.js, Express, TypeScript, Prisma ORM, React (Vite), and Role-Based Access Control.  
+> **GitHub Repository**: [https://github.com/kamaleshsai1/mini-erp-crm](https://github.com/kamaleshsai1/mini-erp-crm)
 
 ---
 
-##  Executive Summary & Key Highlights
+## 🌟 Executive Summary & Key Highlights
 
 This application is designed specifically for wholesale and distribution businesses managing high-throughput inventory, tiered customer relationships, warehouse fulfillment, and sales challans.
 
@@ -23,22 +24,22 @@ This application is designed specifically for wholesale and distribution busines
 
 ---
 
-##  Test Login Credentials (All 4 Roles)
+## 🔐 Test Login Credentials (All 4 Roles)
 
 All demo accounts share the password: **`Password123!`**
 
 | Role | Email | Password | Allowed Capabilities |
 | :--- | :--- | :--- | :--- |
-|  **Admin** | `admin@erp.com` | `Password123!` | Unrestricted full access across all CRM, Products, Logs, Challans, and Users |
-|  **Sales** | `sales@erp.com` | `Password123!` | Manage Customers, schedule follow-ups, create Sales Challans (Draft/Confirmed) |
-|  **Warehouse** | `warehouse@erp.com` | `Password123!` | Manage Product SKUs, execute Stock IN/OUT adjustments, monitor low stock |
-|  **Accounts** | `accounts@erp.com` | `Password123!` | Inspect Challan financial totals, export/print Tax Invoices, verify billing |
+| 👑 **Admin** | `admin@erp.com` | `Password123!` | Unrestricted full access across all CRM, Products, Logs, Challans, and Users |
+| 💼 **Sales** | `sales@erp.com` | `Password123!` | Manage Customers, schedule follow-ups, create Sales Challans (Draft/Confirmed) |
+| 📦 **Warehouse** | `warehouse@erp.com` | `Password123!` | Manage Product SKUs, execute Stock IN/OUT adjustments, monitor low stock |
+| 📊 **Accounts** | `accounts@erp.com` | `Password123!` | Inspect Challan financial totals, export/print Tax Invoices, verify billing |
 
 > **Evaluator Tip**: In the top header bar, click on any role pill (**Admin**, **Sales**, **Warehouse**, **Accounts**) to instantly switch session context without manual re-typing!
 
 ---
 
-##  Architecture & Database Design
+## 🏗️ Architecture & Database Design
 
 ```
 mini-erp-crm/
@@ -55,6 +56,8 @@ mini-erp-crm/
 │   │   ├── schema.postgresql.prisma # Production PostgreSQL schema (Docker / Cloud)
 │   │   └── seed.ts             # Realistic wholesale seed dataset
 │   ├── Dockerfile
+│   ├── nginx.conf              # Production Nginx reverse proxy configuration
+│   ├── ecosystem.config.js     # Production PM2 process manager config
 │   └── package.json
 ├── frontend/
 │   ├── src/
@@ -66,6 +69,7 @@ mini-erp-crm/
 │   │   └── index.css           # Modern, enterprise CSS design system
 │   ├── Dockerfile
 │   └── package.json
+├── .github/workflows/ci.yml    # GitHub Actions automated build & CI pipeline
 ├── docker-compose.yml          # PostgreSQL 15 + Backend + Frontend
 ├── mini-erp-crm.postman_collection.json # Complete API collection
 └── README.md
@@ -87,7 +91,7 @@ erDiagram
 
 ---
 
-##  Quick Start Guide (Local Development)
+## 🚀 Quick Start Guide (Local Development)
 
 ### Prerequisites
 - Node.js (v18+)
@@ -119,12 +123,122 @@ Visit **`http://localhost:5173`** in your browser and log in with any demo role 
 
 ---
 
-##  Docker Deployment (Bonus)
+## ☁️ Deployment & DevOps Guide
 
-To spin up the entire stack (PostgreSQL + Express Backend + Nginx/React Frontend) with Docker:
+### 1. AWS Deployment Options
+
+#### Option A: AWS EC2 (Single-Instance with Docker Compose)
+1. **Launch EC2 Instance**: Launch an AWS EC2 `t3.small` or `t3.medium` instance running Ubuntu 22.04 LTS.
+2. **Configure Security Group**: Open inbound ports `22` (SSH), `80` (HTTP), and `443` (HTTPS).
+3. **Install Docker & Docker Compose**:
+   ```bash
+   sudo apt-get update
+   sudo apt-get install -y docker.io docker-compose
+   sudo systemctl enable docker
+   ```
+4. **Deploy Application**:
+   ```bash
+   git clone https://github.com/kamaleshsai1/mini-erp-crm.git
+   cd mini-erp-crm
+   docker-compose up -d --build
+   ```
+
+#### Option B: AWS ECS (Fargate) + AWS RDS PostgreSQL
+- **Database**: AWS RDS PostgreSQL instance (db.t4g.micro for cost-efficiency).
+- **Backend Container**: Built from `backend/Dockerfile` and deployed to an ECS Fargate Service behind an Application Load Balancer (ALB).
+- **Frontend Container**: Built from `frontend/Dockerfile` (Nginx serving SPA) or hosted via AWS S3 + CloudFront.
+
+---
+
+### 2. Server Setup Documentation (Bare-Metal / VPS / Ubuntu)
+
+For production deployment directly on an Ubuntu/Debian Linux server without Docker:
 
 ```bash
-# In the root project directory:
+# 1. Update OS packages and install Node.js 18
+sudo apt update && sudo apt upgrade -y
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs nginx
+
+# 2. Install PM2 process manager globally
+sudo npm install -g pm2
+
+# 3. Clone and build the application
+cd /var/www
+sudo git clone https://github.com/kamaleshsai1/mini-erp-crm.git
+cd mini-erp-crm
+
+# Backend build
+cd backend
+npm ci
+cp .env.example .env # edit environment variables
+npx prisma generate
+npm run build
+npx prisma db push
+npm run prisma:seed
+
+# Start backend with PM2 cluster mode
+pm2 start ecosystem.config.js
+pm2 save
+pm2 startup
+
+# Frontend build
+cd ../frontend
+npm ci
+npm run build
+
+# 4. Configure Nginx Reverse Proxy
+sudo cp ../backend/nginx.conf /etc/nginx/sites-available/mini-erp
+sudo ln -s /etc/nginx/sites-available/mini-erp /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+
+# 5. Setup Free SSL via Let's Encrypt Certbot
+sudo apt install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d erp.yourdomain.com
+```
+
+---
+
+### 3. Environment Variables Management
+
+Environment variables are isolated through `.env` files and never committed to version control (`.gitignore` protects secrets).
+
+| Variable | Description | Example (Development) | Example (Production / AWS) |
+| :--- | :--- | :--- | :--- |
+| `PORT` | HTTP port for Node.js Express server | `5000` | `5000` |
+| `NODE_ENV` | Application environment state | `development` | `production` |
+| `DATABASE_URL` | Prisma connection string | `file:./dev.db` (SQLite) | `postgresql://user:pass@rds-host:5432/erp?schema=public` |
+| `JWT_SECRET` | Secret key used for signing JWT auth tokens | `super-secret-jwt-token-2026` | `generate-random-high-entropy-secret` |
+| `JWT_EXPIRES_IN` | Token time-to-live | `7d` | `7d` |
+| `CORS_ORIGIN` | Permitted browser origins | `http://localhost:5173` | `https://erp.yourcompany.com` |
+
+---
+
+### 4. Free Cloud Hosting Deployment Guide
+
+As requested in the case study guidelines (Page 4):
+
+1. **Database**: Free cloud PostgreSQL on [Neon.tech](https://neon.tech) or [Supabase](https://supabase.com).
+   - Copy the PostgreSQL connection string (`postgresql://...`).
+2. **Backend**: Free deployment on [Render.com](https://render.com) or [Railway.app](https://railway.app).
+   - Root directory: `backend`
+   - Build command: `npm install && npx prisma generate && npm run build`
+   - Start command: `npm run start`
+   - Add environment variables: `DATABASE_URL`, `JWT_SECRET`, `NODE_ENV=production`.
+3. **Frontend**: Free deployment on [Vercel](https://vercel.com) or [Render Static Site](https://render.com).
+   - Root directory: `frontend`
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+   - Set API proxy or backend URL in `vite.config.ts`.
+
+---
+
+## 🐳 Docker Deployment (Bonus)
+
+To spin up the entire multi-container stack (PostgreSQL + Express Backend + Nginx/React Frontend):
+
+```bash
 docker compose up --build -d
 ```
 
@@ -171,7 +285,7 @@ docker compose up --build -d
 
 ---
 
-##  Postman Collection
+## 📋 Postman Collection
 
 Import `mini-erp-crm.postman_collection.json` directly into Postman.  
 - Includes pre-configured environment variables (`baseUrl`, `adminToken`, `salesToken`, `warehouseToken`, `accountsToken`).
@@ -179,7 +293,7 @@ Import `mini-erp-crm.postman_collection.json` directly into Postman.
 
 ---
 
-##  Important Assumptions & Architectural Decisions
+## 💡 Important Assumptions & Architectural Decisions
 
 1. **Snapshot Immutability**:
    When a sales challan is created, the item names, SKUs, and unit prices are stored directly as snapshot fields on `SalesChallanItem`. This guarantees that subsequent product price updates or renamings never corrupt historical orders or invoices.

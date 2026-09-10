@@ -3,7 +3,7 @@
 > **Full Stack Developer Case Study**: Wholesale & Distribution Operations Suite  
 > Built with Node.js, Express, TypeScript, PostgreSQL (Prisma ORM), React (Vite), and Role-Based Access Control.  
 > 
-> 🌐 **Live 24/7 Production Deployment**:
+> **Live 24/7 Production Deployment**:
 > - **Frontend Portal**: [https://mini-erp-frontend-rqz6.onrender.com](https://mini-erp-frontend-rqz6.onrender.com)
 > - **Backend API**: [https://mini-erp-backend-m2hi.onrender.com](https://mini-erp-backend-m2hi.onrender.com)
 > - **Backend Health Check**: [https://mini-erp-backend-m2hi.onrender.com/health](https://mini-erp-backend-m2hi.onrender.com/health)
@@ -11,7 +11,7 @@
 
 ---
 
-## 🌟 Executive Summary & Key Highlights
+## Executive Summary & Key Highlights
 
 This application is designed specifically for wholesale and distribution businesses managing high-throughput inventory, tiered customer relationships, warehouse fulfillment, and sales challans.
 
@@ -29,22 +29,22 @@ This application is designed specifically for wholesale and distribution busines
 
 ---
 
-## 🔐 Test Login Credentials (All 4 Roles)
+## Test Login Credentials (All 4 Roles)
 
 All demo accounts share the password: **`Password123!`**
 
 | Role | Email | Password | Allowed Capabilities |
 | :--- | :--- | :--- | :--- |
-| 👑 **Admin** | `admin@erp.com` | `Password123!` | Unrestricted full access across all CRM, Products, Logs, Challans, and Users |
-| 💼 **Sales** | `sales@erp.com` | `Password123!` | Manage Customers, schedule follow-ups, create Sales Challans (Draft/Confirmed) |
-| 📦 **Warehouse** | `warehouse@erp.com` | `Password123!` | Manage Product SKUs, execute Stock IN/OUT adjustments, monitor low stock |
-| 📊 **Accounts** | `accounts@erp.com` | `Password123!` | Inspect Challan financial totals, export/print Tax Invoices, verify billing |
+| **Admin** | `admin@erp.com` | `Password123!` | Unrestricted full access across all CRM, Products, Logs, Challans, and Users |
+| **Sales** | `sales@erp.com` | `Password123!` | Manage Customers, schedule follow-ups, create Sales Challans (Draft/Confirmed) |
+| **Warehouse** | `warehouse@erp.com` | `Password123!` | Manage Product SKUs, execute Stock IN/OUT adjustments, monitor low stock |
+| **Accounts** | `accounts@erp.com` | `Password123!` | Inspect Challan financial totals, export/print Tax Invoices, verify billing |
 
 > **Evaluator Tip**: In the top header bar, click on any role pill (**Admin**, **Sales**, **Warehouse**, **Accounts**) to instantly switch session context without manual re-typing!
 
 ---
 
-## 🏗️ Architecture & Database Design
+## Architecture & Database Design
 
 ```
 mini-erp-crm/
@@ -96,7 +96,7 @@ erDiagram
 
 ---
 
-## 🚀 Quick Start Guide (Local Development)
+## Quick Start Guide (Local Development)
 
 ### Prerequisites
 - Node.js (v18+)
@@ -128,7 +128,7 @@ Visit **`http://localhost:5173`** in your browser and log in with any demo role 
 
 ---
 
-## ☁️ Deployment & DevOps Guide
+## Deployment & DevOps Guide
 
 ### 1. AWS Deployment Options
 
@@ -239,7 +239,7 @@ As requested in the case study guidelines (Page 4):
 
 ---
 
-## 🐳 Docker Deployment (Bonus)
+## Docker Deployment (Bonus)
 
 To spin up the entire multi-container stack (PostgreSQL + Express Backend + Nginx/React Frontend):
 
@@ -290,7 +290,7 @@ docker compose up --build -d
 
 ---
 
-## 📋 Postman Collection
+## Postman Collection
 
 Import `mini-erp-crm.postman_collection.json` directly into Postman.  
 - Includes pre-configured environment variables (`baseUrl`, `adminToken`, `salesToken`, `warehouseToken`, `accountsToken`).
@@ -298,7 +298,7 @@ Import `mini-erp-crm.postman_collection.json` directly into Postman.
 
 ---
 
-## 💡 Important Assumptions & Architectural Decisions
+## Important Assumptions & Architectural Decisions
 
 1. **Snapshot Immutability**:
    When a sales challan is created, the item names, SKUs, and unit prices are stored directly as snapshot fields on `SalesChallanItem`. This guarantees that subsequent product price updates or renamings never corrupt historical orders or invoices.
